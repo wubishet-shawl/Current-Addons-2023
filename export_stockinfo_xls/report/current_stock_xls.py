@@ -114,9 +114,9 @@ class StockReportXls(models.AbstractModel):
         w_house = w_house.join(get_warehouse[0])
         sheet.merge_range(5, 2, 5, 3+len(get_warehouse[0]), w_house, format4)
         user = self.env['res.users'].browse(self.env.uid)
-        tz = pytz.timezone(user.tz)
-        time = pytz.utc.localize(datetime.now()).astimezone(tz)
-        sheet.merge_range('A8:G8', 'Report Date: ' + str(time.strftime("%Y-%m-%d %H:%M %p")), format1)
+        #tz = pytz.timezone(user.tz)
+        #time = pytz.utc.localize(datetime.now()).astimezone(tz)
+        #sheet.merge_range('A8:G8', 'Report Date: ' + str(time.strftime("%Y-%m-%d %H:%M %p")), format1)
         sheet.merge_range(7, 7, 7, count, 'Warehouses', format1)
         sheet.merge_range('A9:G9', 'Product Information', format11)
         w_col_no = 6
